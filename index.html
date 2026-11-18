@@ -31,7 +31,7 @@ section{padding:100px 0}
 .phone img{border-radius:36px;width:100%}
 
 /* HERO */
-.hero{position:relative;overflow:hidden;padding:0 0 40px}
+.hero{position:relative;overflow:hidden;padding:78px 0 40px}
 .mesh{position:absolute;left:-10%;right:-10%;top:-360px;height:1080px;transform:skewY(-8deg);transform-origin:0 0;background:radial-gradient(35% 55% at 22% 62%,#12d0c2 0%,rgba(18,208,194,0) 70%),radial-gradient(40% 60% at 55% 55%,#2d6cff 0%,rgba(45,108,255,0) 72%),radial-gradient(35% 60% at 88% 50%,#a42cff 0%,rgba(164,44,255,0) 70%),radial-gradient(25% 40% at 72% 85%,#ff6fcf 0%,rgba(255,111,207,0) 70%),#5b7cff}
 .fade{position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.94) 34%,rgba(255,255,255,.4) 52%,rgba(255,255,255,0) 68%)}
 nav{position:relative;display:flex;align-items:center;justify-content:space-between;padding:22px 0}
@@ -348,29 +348,227 @@ h1{font-size:clamp(40px,4.6vw,58px);font-weight:750;margin:22px 0 0}
 footer{padding:40px 0 60px;font-size:13px;color:#8a93ad;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
 footer img{height:24px}
 
+
+/* HEADER + PRZEŁĄCZNIK */
+.top{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .25s,box-shadow .25s}
+.top.sc{background:rgba(255,255,255,.9);-webkit-backdrop-filter:saturate(1.6) blur(14px);backdrop-filter:saturate(1.6) blur(14px);box-shadow:0 1px 0 var(--line),0 10px 26px -20px rgba(10,26,68,.4)}
+.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:78px}
+.bar .logo img{height:30px}
+.bar .navr{justify-self:end}
+.seg{position:relative;display:grid;grid-template-columns:1fr 1fr;padding:5px;border-radius:999px;background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:0 12px 30px -14px rgba(10,26,68,.45)}
+.seg button{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:9px;padding:12px 26px;border:0;background:none;font:inherit;font-size:15px;font-weight:650;color:var(--mute);cursor:pointer;border-radius:999px;white-space:nowrap;transition:color .3s}
+.seg button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.seg button:hover{color:var(--navy)}
+.seg button[aria-selected=true]{color:#fff}
+.seg .thumb{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:999px;border:2px solid transparent;background:linear-gradient(var(--navy),var(--navy)) padding-box,var(--g) border-box;box-shadow:0 8px 22px -8px rgba(45,108,255,.8);transition:transform .45s cubic-bezier(.65,0,.25,1)}
+body[data-view=buyer] .seg .thumb{transform:translateX(100%)}
+.view{display:none}
+body[data-view=shop] #v-shop,body[data-view=buyer] #v-buyer,body[data-view=int] #v-int,body[data-view=price] #v-price{display:block}
+body:not([data-view=buyer]) .only-buyer,body[data-view=buyer] .not-buyer{display:none}
+[data-go],[data-scroll]{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.view{animation:vin .45s ease both}
+@keyframes vin{from{opacity:0}to{opacity:1}}
+.xlink{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:16px;padding:26px 32px;border:1px solid var(--line);border-radius:22px;background:var(--soft);text-decoration:none;cursor:pointer}
+.xlink small{display:block;font-size:13px;font-weight:650;color:var(--blue)}
+.xlink b{display:block;font-size:22px;color:var(--navy);letter-spacing:-.02em;margin-top:4px}
+.xlink .btn{flex:none}
+
+/* WIDOK DLA KUPUJĄCYCH */
+.bst .p1{left:104px}
+.bst .p2{left:-44px}
+.push{position:absolute;z-index:3;left:410px;top:70px;width:238px;display:flex;gap:11px;align-items:flex-start;background:rgba(255,255,255,.97);border-radius:18px;padding:12px 14px;box-shadow:0 18px 40px -12px rgba(10,26,68,.55)}
+.push img{width:34px;height:34px;flex:none;border-radius:9px;border:1px solid var(--line);padding:5px;background:#fff}
+.push b{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.06em;color:#8a93ad;font-weight:700}
+.push b span{letter-spacing:0;font-weight:500}
+.push strong{display:block;font-size:14px;color:var(--navy);margin-top:2px;line-height:1.3}
+.push div>span{display:block;font-size:12.5px;color:var(--mute);line-height:1.35;margin-top:1px}
+.saved{position:absolute;z-index:3;left:410px;top:404px;width:238px;background:#fff;border-radius:18px;padding:14px 16px 6px;box-shadow:0 18px 40px -12px rgba(10,26,68,.55)}
+.saved small{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+.saved small img{height:16px}
+.saved div{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;color:var(--navy);padding:9px 0;border-top:1px solid var(--line);white-space:nowrap}
+.saved svg{flex:none;width:16px;height:16px;stroke:#2d6cff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.badges{display:flex;align-items:center;gap:12px;margin-top:30px}
+.badges img{height:48px;width:auto}
+.badges img.gp{height:64px;margin:-8px 0}
+.rate{display:flex;align-items:center;gap:12px;margin-top:30px;padding-top:20px;border-top:1px solid var(--line);max-width:540px;font-size:13.5px;color:var(--mute);flex-wrap:wrap}
+.stars{color:#ffb400;letter-spacing:2px}
+.rate b{color:var(--navy);font-size:15px}
+.rate i{width:4px;height:4px;border-radius:50%;background:#c3cbe0}
+.bapp{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.bapp .sit .phone{width:226px;margin-bottom:-160px}
+.bapp .sit p:last-of-type{margin-bottom:4px}
+.safe{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.safel{list-style:none;margin-top:30px}
+.safel li{display:grid;grid-template-columns:46px 1fr;gap:16px;padding:16px 0;border-top:1px solid rgba(255,255,255,.1)}
+.safel i{width:46px;height:46px;border-radius:13px;background:var(--g);display:grid;place-items:center;box-shadow:0 10px 22px -12px rgba(45,108,255,.85)}
+.safel svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.safel b{display:block;color:#fff;font-size:16.5px;letter-spacing:-.01em}
+.safel span{display:block;color:#aab4d4;font-size:14.5px;margin-top:3px}
+.pmeth{display:flex;gap:10px;margin-top:8px;align-items:center;flex-wrap:wrap}
+.pmeth em{font-style:normal;font-size:13px;color:#8a97c2;margin-right:6px}
+.pmeth span{display:grid;place-items:center;height:40px;min-width:64px;padding:0 12px;background:#fff;border-radius:9px}
+.pmeth img{width:auto}
+.safev{position:relative;height:580px}
+.safev .glow{position:absolute;inset:-60px -40px;background:radial-gradient(34% 38% at 68% 42%,rgba(45,108,255,.55),rgba(45,108,255,0) 70%),radial-gradient(28% 32% at 28% 66%,rgba(18,208,194,.32),rgba(18,208,194,0) 70%),radial-gradient(26% 30% at 78% 74%,rgba(164,44,255,.38),rgba(164,44,255,0) 70%)}
+.safev .phone{position:absolute;right:30px;top:0;width:262px}
+.safev .push{left:0;top:96px;width:268px}
+.tcard{position:absolute;left:10px;top:330px;width:268px;height:166px;border-radius:16px;padding:20px 20px 16px;color:#fff;background:linear-gradient(125deg,#12d0c2 0%,#2d6cff 52%,#a42cff 100%);box-shadow:0 24px 48px -18px rgba(45,108,255,.9);overflow:hidden;transform:rotate(-5deg)}
+.tcard:after{content:"";position:absolute;right:-40px;top:-50px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.12)}
+.tcard .chip{width:34px;height:25px;border-radius:5px;background:linear-gradient(135deg,#ffe7a6,#d8b25a)}
+.tcard .num{font-size:17px;letter-spacing:.12em;font-weight:600;margin-top:22px;font-variant-numeric:tabular-nums}
+.tcard .row{display:flex;justify-content:space-between;align-items:flex-end;margin-top:14px;font-size:11px;font-weight:700;letter-spacing:.14em;opacity:.95}
+.tcard .row img{height:26px;background:#fff;border-radius:5px;padding:3px 6px}
+.shops{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:44px}
+.shops span{display:grid;place-items:center;height:104px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 10px 24px -22px rgba(10,26,68,.6)}
+.shops img{max-height:34px;max-width:70%;width:auto}
+.revh{display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.score{display:flex;align-items:center;gap:16px}
+.score b{font-size:64px;font-weight:750;letter-spacing:-.03em;line-height:1}
+.score .stars{font-size:20px;letter-spacing:3px}
+.score small{display:block;font-size:13.5px;color:var(--mute);margin-top:2px}
+.revs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column}
+.rev p{font-size:15px;line-height:1.55;color:var(--ink);margin:12px 0 20px}
+.rev .au{margin-top:auto;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mute)}
+.rev .au i{width:34px;height:34px;border-radius:50%;background:var(--g);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:14px}
+.rev .au b{color:var(--navy);display:block;font-size:14px}
+.faqg{display:grid;grid-template-columns:.75fr 1.25fr;gap:60px;align-items:start}
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.qa div{border:1px solid var(--line);border-radius:18px;padding:24px;background:#fff}
+.qa b{display:block;font-size:17px;color:var(--navy);letter-spacing:-.01em}
+.qa p{font-size:14.5px;color:var(--mute);margin-top:8px}
+.final .badges{justify-content:center}
+
+/* NAGŁÓWEK: linki Integracje i Cennik */
+.bl{display:flex;align-items:center;gap:38px}
+.nl{display:flex;gap:28px}
+.nl a{position:relative;font-size:15px;font-weight:600;color:var(--navy);padding:6px 0}
+.nl a:hover{color:var(--blue)}
+.nl a.on{font-weight:700}
+.nl a.on:after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;border-radius:2px;background:var(--g)}
+.navr a.lgn{font-weight:600;color:var(--navy)}
+.navr a.lgn:hover{color:var(--blue)}
+.btn.sm{padding:10px 16px;font-size:14px}
+.btn.inv{background:#fff;color:var(--navy)}
+.btn.inv2{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4)}
+
+/* WIDOK INTEGRACJE */
+.hub{position:relative;height:540px;width:600px;margin-left:auto}
+.hubl{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.hubl path{fill:none;stroke:rgba(255,255,255,.9);stroke-width:2;stroke-dasharray:5 7;animation:flow 1.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-24}}
+.ht{position:absolute;display:grid;place-items:center;width:150px;height:60px;background:#fff;border-radius:14px;box-shadow:0 14px 30px -14px rgba(10,26,68,.55)}
+.ht.sm{width:110px}
+.ht img{width:auto;max-width:76%}
+.hubc{position:absolute;left:226px;top:210px;width:148px;height:80px;display:grid;place-items:center;align-content:center;gap:4px;border-radius:18px;border:2px solid transparent;background:linear-gradient(var(--navy),var(--navy)) padding-box,var(--g) border-box;box-shadow:0 0 60px rgba(45,108,255,.6)}
+.hubc img{height:24px}
+.hubc span{font-size:11px;font-weight:650;color:#9fb0e0;letter-spacing:.03em}
+.hub small{position:absolute;white-space:nowrap;font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);background:rgba(255,255,255,.85);border-radius:999px;padding:4px 10px}
+.hub .hl1{left:0;top:80px}.hub .hl2{right:0;top:40px}.hub .hl3{left:250px;top:512px}
+.pcards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+.pcard{border:1px solid var(--line);border-radius:20px;padding:28px;background:#fff;display:flex;flex-direction:column;box-shadow:0 18px 40px -34px rgba(10,26,68,.5)}
+.pch{display:flex;align-items:center;justify-content:space-between;gap:12px;height:44px}
+.pch img{width:auto}
+.ver{font-size:12.5px;font-weight:650;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:5px 11px;white-space:nowrap}
+.pcard h3{font-size:20px;margin:18px 0 6px;letter-spacing:-.015em}
+.pcard>p{font-size:14.5px;color:var(--mute)}
+.compat{margin-top:16px}
+.compat small{display:block;font-size:11px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;color:#8a93ad;margin-bottom:8px}
+.compat div{display:flex;flex-wrap:wrap;gap:6px}
+.compat span{font-size:12.5px;font-weight:600;color:var(--navy);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+.pcard .acts{display:flex;gap:10px;margin-top:auto;padding-top:22px}
+.pcard.api{background:linear-gradient(#fff,#fff) padding-box,var(--g) border-box;border:2px solid transparent}
+.apii{width:44px;height:44px;border-radius:13px;background:var(--g);color:#fff;font-style:normal;font-weight:800;font-size:15px;display:grid;place-items:center}
+.soonrow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.sooncard{display:flex;align-items:center;gap:14px;border:1px dashed #c9d2ea;border-radius:16px;padding:16px 18px;background:#fff}
+.sooncard img{width:auto}
+.sooncard .btn{margin-left:auto}
+.opg{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:40px}
+.opg span{display:grid;place-items:center;height:86px;border:1px solid var(--line);border-radius:14px;background:#fff;font-weight:750;color:var(--navy);font-size:17px;letter-spacing:-.01em}
+.opg img{max-width:62%;width:auto}
+.dlv{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+.dlv span{display:grid;place-items:center;height:96px;border:1px solid var(--line);border-radius:14px;background:#fff;font-weight:750;color:var(--navy);font-size:18px;letter-spacing:-.01em}
+.dlv img{width:auto;max-width:60%}
+.dlv .add{border:1.5px dashed #b9c6ee;background:var(--soft);align-content:center;gap:2px}
+.dlv .add b{font-size:16px;color:var(--blue)}
+.dlv .add small{font-size:12.5px;font-weight:500;color:var(--mute)}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.st3{border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.04);padding:26px}
+.st3 i{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--g);color:#fff;font-style:normal;font-weight:800;box-shadow:0 0 24px rgba(45,108,255,.6)}
+.st3 b{display:block;color:#fff;font-size:18px;margin-top:16px;letter-spacing:-.01em}
+.st3 span{display:block;color:#aab4d4;font-size:14.5px;margin-top:6px}
+
+/* WIDOK CENNIK */
+.pflow{position:relative;display:grid;gap:12px;width:440px;margin-left:auto;margin-right:30px}
+.pf{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:center;background:#fff;border-radius:20px;padding:20px 22px;box-shadow:0 18px 40px -16px rgba(10,26,68,.5)}
+.pf i{width:52px;height:52px;border-radius:15px;background:var(--soft);display:grid;place-items:center}
+.pf i svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pf small{display:block;font-size:11.5px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;color:#8a93ad}
+.pf b{display:block;font-size:32px;font-weight:750;letter-spacing:-.025em;color:var(--navy);line-height:1.15;margin-top:2px}
+.pf span{display:block;font-size:13.5px;color:var(--mute)}
+.pf.me{border:2px solid transparent;background:linear-gradient(var(--navy),var(--navy)) padding-box,var(--g) border-box}
+.pf.me b{color:#fff}.pf.me small{color:#8ea0d6}.pf.me span{color:#c3cbe6}
+.pf.me i{background:rgba(255,255,255,.1)}.pf.me i svg{stroke:#5ee0d4}
+.pf.earn i{background:var(--g)}.pf.earn i svg{stroke:#fff}
+.pzero{display:flex;gap:8px;justify-content:center;margin-top:4px}
+.pzero span{background:rgba(255,255,255,.92);border-radius:999px;padding:7px 13px;font-size:12.5px;font-weight:700;color:var(--navy);box-shadow:0 8px 20px -12px rgba(10,26,68,.5)}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+.cin{border:1px solid var(--line);border-radius:22px;background:#fff;padding:34px}
+.rg+.rg{margin-top:30px}
+.rg label{display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-size:15.5px;font-weight:650;color:var(--navy)}
+.rg output{font-size:26px;font-weight:750;letter-spacing:-.02em;white-space:nowrap}
+.rg input{width:100%;margin-top:14px;accent-color:#2d6cff;height:6px;cursor:pointer}
+.rg small{display:block;font-size:12.5px;color:#8a93ad;margin-top:8px}
+.cout{border-radius:22px;background:var(--navy);color:#fff;padding:14px 34px 30px;box-shadow:0 30px 60px -34px rgba(10,26,68,.8)}
+.co{padding:20px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.co small{font-size:13.5px;color:#aab4d4;display:block}
+.co b{font-size:36px;font-weight:750;letter-spacing:-.025em;display:block;margin-top:4px;line-height:1.15}
+.cbar{margin-top:22px}
+.cbar>small{font-size:12px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;color:#8ea0d6}
+.cbar div{display:grid;grid-template-columns:200px 1fr;gap:6px 14px;align-items:center;font-size:13.5px;color:#dfe5f5;margin-top:12px}
+.cbar i{display:block;height:12px;border-radius:6px;background:var(--g);min-width:8px;transition:width .3s}
+.cbar i.mk{background:#ff9d8f}
+.cbar em{grid-column:2;font-style:normal;font-size:13px;font-weight:650;color:#fff}
+.incl{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+.ibx{border:1px solid var(--line);border-radius:22px;padding:30px;background:#fff}
+.ibx h3{font-size:20px;letter-spacing:-.015em}
+.zl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.zl div{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--soft);border-radius:12px;padding:15px 16px;font-size:14.5px;font-weight:600;color:var(--navy)}
+.zl b{font-size:16px;font-weight:750;white-space:nowrap}
+.inl{list-style:none;margin-top:18px;display:grid;gap:14px}
+.inl li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--ink);line-height:1.4}
+.inl i{flex:none;width:22px;height:22px;border-radius:50%;background:var(--g);color:#fff;font-style:normal;font-size:11.5px;font-weight:800;display:grid;place-items:center}
+
+@media(max-width:900px){.nl{display:none}.hub{transform:scale(.6);transform-origin:0 0;height:330px}.pflow{width:auto;margin:0}.pcards,.calc,.incl{grid-template-columns:1fr}.opg{grid-template-columns:repeat(3,1fr)}.dlv,.steps3,.soonrow{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.bar{grid-template-columns:auto 1fr;height:auto;padding:12px 0;gap:12px}.seg{grid-column:1/-1;grid-row:2;justify-self:center}.navr .btn{display:none}.hero{padding-top:130px}.safe,.faqg{grid-template-columns:1fr}.bapp,.revs,.qa{grid-template-columns:1fr 1fr}.shops{grid-template-columns:repeat(3,1fr)}.push,.saved{display:none}.xlink{flex-direction:column;align-items:flex-start}}
 @media(max-width:900px){.hgrid,.ngrid,.case,.layer,.buyers{grid-template-columns:1fr}.bento,.pgrid,.stats,.int,.keep,.feat ul{grid-template-columns:1fr 1fr}.stats>div{border-left:0}.flow{grid-template-columns:repeat(2,1fr)}.links{display:none}.video{grid-template-columns:1fr}.methods{flex-direction:column;align-items:flex-start}.mrow{flex-wrap:wrap}}
 </style>
 </head>
-<body>
+<body data-view="shop">
+<header class="top" id="top"><div class="w bar">
+  <div class="bl"><a class="logo" data-go="shop"><img src="assets/logos/simply-logo.svg" alt="Simply.IN"></a><div class="nl"><a data-go="int">Integracje</a><a data-go="price">Cennik</a></div></div>
+  <div class="seg" role="tablist" aria-label="Wybierz stronę"><i class="thumb"></i>
+    <button role="tab" data-go="shop" aria-selected="true"><svg viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v2a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M5 13v7h14v-7"/><path d="M10 20v-4h4v4"/></svg>Dla sklepów</button>
+    <button role="tab" data-go="buyer" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M6 7h12l-1 14H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>Dla kupujących</button>
+  </div>
+  <div class="navr"><a class="lgn not-buyer" href="https://merchant.simply.in" target="_blank" rel="noopener">Zaloguj się</a><a class="btn b1 not-buyer" href="https://merchant.simply.in/register/" target="_blank" rel="noopener">Załóż konto sklepu</a><a class="btn b1 only-buyer" data-scroll="b-final">Pobierz aplikację</a></div>
+</div></header>
 
+<main class="view" id="v-shop">
 <!-- 1. HERO -->
 <div class="hero" id="s-hero"><div class="mesh"></div><div class="fade"></div>
 <div class="w">
-<nav>
-  <a class="logo"><img src="assets/logos/simply-logo.svg" alt="Simply.IN"></a>
-  <div class="links"><span class="on">Dla sklepów</span><span>Dla kupujących</span><span>Integracje</span><span>Cennik</span><span>Dokumentacja</span></div>
-  <div class="navr"><span>Zaloguj się</span><a class="btn b1">Załóż konto sklepu</a></div>
-</nav>
 <div class="hgrid">
   <div>
     <div class="pill"><b>Nowość</b>Kup teraz z Simply.IN prosto z karty produktu ›</div>
     <h1>Jedno kliknięcie z&nbsp;przodu.<br><span class="gt">Twoja bramka pod&nbsp;spodem.</span></h1>
     <p class="hsub">Simply.IN rozpoznaje kupującego po e-mailu i podstawia adres, dostawę i zapisaną płatność, nawet jeśli konto założył w innym sklepie. Pieniądze idą przez Twojego operatora, a klient nie wychodzi z Twojej strony.</p>
-    <div class="ctas"><a class="btn b1">Załóż konto sklepu →</a><a class="btn b2"><i class="play"></i>Zobacz 13-sekundowe demo</a></div>
+    <div class="ctas"><a class="btn b1" href="https://merchant.simply.in/register/" target="_blank" rel="noopener">Załóż konto sklepu →</a><a class="btn b2"><i class="play"></i>Zobacz 13-sekundowe demo</a></div>
     <div class="plat"><small>Wtyczka do</small><img src="assets/logos/pf-woo.svg" alt="WooCommerce"><img src="assets/logos/pf-prestashop.svg" alt="PrestaShop" style="height:13px"><img src="assets/logos/pf-magento.svg" alt="Magento" style="height:24px"><span>+ API</span></div>
   </div>
   <div class="stage">
-    <div class="phone p2"><img src="assets/app/app_1.jpg" alt="Aplikacja Simply.IN"></div>
+    <div class="phone p2"><img src="assets/app/app-surf-home.png" alt="Aplikacja Simply.IN"></div>
     <div class="phone p1"><img src="assets/site/surf-pdp-kup-teraz.png" alt="Karta produktu surf.inc z przyciskiem Kup teraz z Simply.IN"><div class="hring"></div></div>
     <div class="pin"><img src="assets/logos/simply-sygnet.svg" alt=""><div><b>Kup teraz z Simply.IN</b><span>Prosto z karty produktu,<br>bez koszyka i formularza</span></div></div>
     <div class="timer"><i></i>13 s do zapłaty</div>
@@ -446,7 +644,7 @@ footer img{height:24px}
   <div class="eyebrow">Gdzie sklep na tym zarabia</div>
   <h2>Trzy sytuacje, które dziś kosztują Cię zamówienia.</h2>
   <div class="bento">
-    <div class="tile sit"><span class="badge ok">Dostępne</span><h3>Klientka pierwszy raz u Ciebie, a płaci jednym kliknięciem</h3><p>Ma konto Simply.IN z innego sklepu, więc u Ciebie nie wypełnia formularza.</p><p class="gain"><b>Dla Ciebie:</b> nowy klient bez porzuconego formularza.</p><div class="phone"><img src="assets/app/app_1.jpg" alt=""></div></div>
+    <div class="tile sit"><span class="badge ok">Dostępne</span><h3>Klientka pierwszy raz u Ciebie, a płaci jednym kliknięciem</h3><p>Ma konto Simply.IN z innego sklepu, więc u Ciebie nie wypełnia formularza.</p><p class="gain"><b>Dla Ciebie:</b> nowy klient bez porzuconego formularza.</p><div class="phone"><img src="assets/app/app-surf-home.png" alt=""></div></div>
     <div class="tile sit"><span class="badge ok">Dostępne</span><h3>Klient sprawdza paczkę w aplikacji, a nie dzwoni do Ciebie</h3><p>Statusy zamówień ze wszystkich sklepów z Simply.IN w jednym miejscu, z numerem przesyłki.</p><p class="gain"><b>Dla Ciebie:</b> mniej pytań „gdzie jest moja paczka”.</p><div class="phone"><img src="assets/app/app_5.jpg" alt=""></div></div>
     <div class="tile sit"><span class="badge soon">Wkrótce</span><h3>Klient chce zwrócić, a Ty proponujesz wymianę</h3><p>Zwrot zgłasza w aplikacji i nadaje paczkę DHL, DPD, Orlen Paczką albo InPostem. Zanim oddasz pieniądze, proponujesz inny rozmiar albo bon.</p><p class="gain"><b>Dla Ciebie:</b> część zwrotów zostaje sprzedażą.</p><div class="phone"><img src="assets/app/app_4.jpg" alt=""></div></div>
     <div class="tile tall"><span class="badge new">Nowość</span><h3>Kup teraz z karty produktu</h3><p>Przycisk w kolorach Twojego sklepu. Klient kupuje bez przechodzenia przez koszyk.</p><div class="ktshot"><img src="assets/site/surf-pdp-kup-teraz.png" alt="Karta produktu surf.inc z przyciskiem Kup teraz z Simply.IN"><div class="kring"></div></div></div>
@@ -532,7 +730,7 @@ footer img{height:24px}
       <b>pay-by-link</b>
     </div>
   </div>
-  <a class="link">Dokumentacja i API dla własnych platform na docs.simply.in →</a>
+  <a class="link" data-go="int">Wszystkie integracje i zgodne moduły →</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="link" href="https://docs.simply.in" target="_blank" rel="noopener">Dokumentacja i API na docs.simply.in →</a>
 </div></section>
 
 <!-- 7. SURF CASE + PRICING -->
@@ -567,6 +765,7 @@ footer img{height:24px}
     <div class="pc"><span>Ty płacisz Simply.IN</span><b>0,49-0,99 zł</b><span>za zakup powracającego klienta jednym kliknięciem</span></div>
     <div class="pc hl"><span>Simply.IN płaci Tobie</span><b class="gt">0,25-1,00 zł</b><span>za każde nowe konto Simply.IN założone w Twoim sklepie</span></div>
   </div>
+  <a class="link" data-go="price">Pełny cennik i kalkulator →</a>
 </div></section>
 
 <!-- 8. BUYERS + CTA -->
@@ -575,8 +774,9 @@ footer img{height:24px}
     <div class="eyebrow">Druga strona sieci</div>
     <h2>Twoi klienci dostają aplikację, która przyprowadza ich z powrotem.</h2>
     <p class="lead">Zamówienia ze wszystkich sklepów z Simply.IN, śledzenie paczek, ulubione punkty odbioru i lista sklepów, w których kupią jednym kliknięciem. Twój sklep jest na tej liście.</p>
-    <div class="apps"><img src="assets/logos/badge-apple.svg" alt="App Store"><img src="assets/logos/badge-gplay.png" alt="Google Play"></div>
+    <div class="apps"><a href="https://apps.apple.com/pl/app/simply-in/id6476778468" target="_blank" rel="noopener"><img src="assets/logos/badge-apple.svg" alt="App Store"></a><a href="https://play.google.com/store/apps/details?id=simplyin.app" target="_blank" rel="noopener"><img src="assets/logos/badge-gplay.png" alt="Google Play"></a></div>
     <p class="cap">4,9 na 5 w App Store</p>
+    <a class="link" data-go="buyer">Zobacz stronę dla kupujących →</a>
   </div>
   <div class="trio">
     <div class="phone"><img src="assets/app/app_3.jpg" alt=""></div>
@@ -588,10 +788,380 @@ footer img{height:24px}
 <div class="w" id="s-final">
   <div class="final"><h2>Dołóż jedno kliknięcie do checkoutu, który już masz.</h2>
     <p>Instalacja wtyczki zajmuje kilka minut, a wyłączenie jedno kliknięcie.</p>
-    <div class="ctas" style="margin-top:28px"><a class="btn b1">Załóż konto sklepu →</a><a class="btn b2">Umów 15 minut z zespołem</a></div>
+    <div class="ctas" style="margin-top:28px"><a class="btn b1" href="https://merchant.simply.in/register/" target="_blank" rel="noopener">Załóż konto sklepu →</a><a class="btn b2">Umów 15 minut z zespołem</a></div>
   </div>
-  <footer><img src="assets/logos/simply-logo.svg" alt="Simply.IN"><span>© 2026 Simply.IN P.S.A. · Regulamin B2B · Polityka prywatności · Punkt kontaktowy DSA</span></footer>
+  <a class="xlink" data-go="buyer"><div><small>Kupujesz w internecie?</small><b>Zobacz, co Simply.IN daje kupującym.</b></div><span class="btn b2">Simply.IN dla kupujących →</span></a>
+</div>
+</main>
+
+<main class="view" id="v-buyer">
+<!-- B1. HERO -->
+<div class="hero" id="b-hero"><div class="mesh"></div><div class="fade"></div>
+<div class="w"><div class="hgrid">
+  <div>
+    <div class="pill"><b>0 zł</b>Aplikacja i konto za darmo, w App Store i Google Play</div>
+    <h1>Dane wpisujesz raz.<br><span class="gt">Potem jedno kliknięcie.</span></h1>
+    <p class="hsub">Adres, ulubiony paczkomat i karta czekają w Simply.IN. W każdym sklepie z Simply.IN wpisujesz tylko e-mail i potwierdzasz zakup w telefonie. Bez haseł i bez zakładania kolejnych kont.</p>
+    <div class="badges"><a href="https://apps.apple.com/pl/app/simply-in/id6476778468" target="_blank" rel="noopener"><img src="assets/logos/badge-apple.svg" alt="Pobierz w App Store"></a><a href="https://play.google.com/store/apps/details?id=simplyin.app" target="_blank" rel="noopener"><img class="gp" src="assets/logos/badge-gplay.png" alt="Pobierz z Google Play"></a></div>
+    <div class="rate"><span class="stars">★★★★★</span><b>4,9</b><span>w App Store</span><i></i><span>ponad 5 900 kupujących ma już konto</span></div>
+  </div>
+  <div class="stage bst">
+    <div class="phone p2"><img src="assets/site/flow-surf-5.png" alt="Płatność z Simply.IN w checkoucie surf.inc"></div>
+    <div class="phone p1"><img src="assets/app/app-surf-home.png" alt="Aplikacja Simply.IN z zamówieniami z Surf Inc."></div>
+    <div class="push"><img src="assets/logos/simply-sygnet.svg" alt=""><div><b>SIMPLY.IN <span>teraz</span></b><strong>Potwierdź zakup</strong><span>Surf Inc. · Fuel To Fire Tee<br>399,00 zł</span></div></div>
+    <div class="saved"><small><img src="assets/logos/simply-sygnet.svg" alt="">Zapisane w Simply.IN</small>
+      <div><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>ul. Hoża 43/5, Warszawa</div>
+      <div><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>Paczkomat WAW53AP</div>
+      <div><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Mastercard •••• 0747</div>
+    </div>
+  </div>
+</div></div></div>
+
+<div class="w" id="b-stats">
+  <div class="stats"><div><b class="gt">13 s</b><span>trwa kolejny zakup z Simply.IN</span></div><div><b class="gt">0 zł</b><span>za aplikację i konto, zawsze</span></div><div><b class="gt">20+</b><span>sklepów z Simply.IN</span></div><div><b class="gt">4,9 ★</b><span>średnia ocen w App Store</span></div></div>
 </div>
 
+<!-- B2. JAK KUPUJESZ -->
+<section id="b-flow"><div class="w">
+  <div class="eyebrow">Jak kupujesz z Simply.IN</div>
+  <h2>Tak wygląda zakup w Surf Inc. z kontem Simply.IN.</h2>
+  <p class="lead">Konto zakładasz w jednym kroku, przy pierwszym zakupie albo w aplikacji. Potem w każdym sklepie z Simply.IN <b>wystarczy e-mail</b>.</p>
+  <div class="flow">
+    <div class="fs"><div class="shot"><img src="assets/site/flow-sm-1.png" alt="Karta produktu surf.inc z przyciskiem Kup teraz z Simply.IN"></div><div class="h"><span>1</span><h3>Wybierasz produkt</h3></div><p>Klikasz „Kup teraz z Simply.IN” albo idziesz do koszyka.</p></div>
+    <div class="fs"><div class="shot"><img src="assets/site/flow-sm-2.png" alt="Pole e-mail z logo Simply.IN na surf.inc"></div><div class="h"><span>2</span><h3>Wpisujesz e-mail</h3></div><p>Logo Simply.IN w polu znaczy, że sklep Cię rozpozna.</p></div>
+    <div class="fs"><div class="shot"><img src="assets/site/flow-sm-3.png" alt="Okienko Potwierdź, że to Ty"></div><div class="h"><span>3</span><h3>Potwierdzasz w telefonie</h3></div><p>Dotykasz powiadomienia albo wpisujesz kod z SMS-a.</p></div>
+    <div class="fs"><div class="shot"><img src="assets/site/flow-sm-4.png" alt="Adres i paczkomat z profilu Simply.IN"></div><div class="h"><span>4</span><h3>Dane są już wpisane</h3></div><p>Adres i paczkomat z Twojego profilu, nic nie przepisujesz.</p></div>
+    <div class="fs"><div class="shot"><img src="assets/site/flow-sm-5.png" alt="Płatność z Simply.IN na surf.inc"></div><div class="h"><span>5</span><h3>Płacisz jednym kliknięciem</h3></div><p>BLIK albo zapisana karta, tak jak lubisz.</p></div>
+  </div>
+  <div class="video">
+    <div class="th"><img src="assets/site/yt-demo.jpg" alt="Demo Simply.IN"></div>
+    <div><b class="gt">13 sekund</b><p>od wejścia do koszyka do opłaconego zamówienia. Zobacz prawdziwy zakup z kontem Simply.IN.</p></div>
+    <a class="btn b1">Obejrzyj film</a>
+  </div>
+</div></section>
+
+<!-- B3. APLIKACJA -->
+<section class="soft" id="b-app"><div class="w">
+  <div class="eyebrow">Aplikacja Simply.IN</div>
+  <h2>Wszystko po zakupie masz w jednym miejscu.</h2>
+  <p class="lead">Zamówienia ze wszystkich sklepów z Simply.IN, paczki, punkty odbioru i zwroty. Bez szukania maili z potwierdzeniem.</p>
+  <div class="bapp">
+    <div class="tile sit"><span class="badge ok">Dostępne</span><h3>Wszystkie zamówienia</h3><p>Wszystko, co kupiłeś przez Simply.IN, na jednym ekranie.</p><div class="phone"><img src="assets/app/app-surf-home.png" alt="Ekran główny aplikacji Simply.IN"></div></div>
+    <div class="tile sit"><span class="badge ok">Dostępne</span><h3>Paczka śledzona do końca</h3><p>Status od przygotowania do odbioru, bez szukania numeru przesyłki w mailach.</p><div class="phone"><img src="assets/app/app_5.jpg" alt="Status zamówienia w aplikacji Simply.IN"></div></div>
+    <div class="tile sit"><span class="badge ok">Dostępne</span><h3>Ulubione paczkomaty</h3><p>Zaznaczasz punkty odbioru raz i wybierasz je jednym dotknięciem.</p><div class="phone"><img src="assets/app/app_3.jpg" alt="Ulubione punkty odbioru w aplikacji Simply.IN"></div></div>
+    <div class="tile sit"><span class="badge soon">Wkrótce</span><h3>Zwrot w kilka dotknięć</h3><p>Wybierasz, co oddajesz, i nadajesz paczkę DHL, DPD, Orlen Paczką albo InPostem.</p><div class="phone"><img src="assets/app/app_4.jpg" alt="Zwrot w aplikacji Simply.IN"></div></div>
+  </div>
+</div></section>
+
+<!-- B4. BEZPIECZEŃSTWO -->
+<section class="net" id="b-safe"><div class="w"><div class="safe">
+  <div>
+    <div class="eyebrow" style="color:#5ee0d4">Bezpieczeństwo</div>
+    <h2>Każdy zakup potwierdzasz w swoim telefonie.</h2>
+    <p class="lead">Zanim Simply.IN podstawi Twoje dane, potwierdzasz, że to Ty: dotknięciem powiadomienia w aplikacji albo kodem z SMS-a.</p>
+    <ul class="safel">
+      <li><i><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></i><div><b>Sklep nie widzi numeru Twojej karty</b><span>Karta jest zapisana jako token, chroniony standardem PCI DSS z corocznym audytem.</span></div></li>
+      <li><i><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></i><div><b>Bez haseł do zapamiętania</b><span>Logujesz się e-mailem i potwierdzeniem w telefonie.</span></div></li>
+      <li><i><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></i><div><b>Twoje dane, Twoje zgody</b><span>Dane chronimy zgodnie z RODO, a zgody marketingowe ustawiasz sam.</span></div></li>
+    </ul>
+    <div class="pmeth"><em>Płacisz tym, czego używasz:</em><span><img src="assets/logos/pay-blik.svg" alt="BLIK" style="height:22px"></span><span><img src="assets/logos/pay-visa.svg" alt="Visa" style="height:14px"></span><span><img src="assets/logos/pay-mastercard2.svg" alt="Mastercard" style="height:24px"></span><span><img src="assets/logos/pay-applepay.svg" alt="Apple Pay" style="height:20px"></span></div>
+  </div>
+  <div class="safev"><div class="glow"></div>
+    <div class="push"><img src="assets/logos/simply-sygnet.svg" alt=""><div><b>SIMPLY.IN <span>teraz</span></b><strong>Potwierdź, że to Ty</strong><span>Logowanie do Simply.IN w sklepie Surf Inc.</span></div></div>
+    <div class="tcard"><div class="chip"></div><div class="num">•••• •••• •••• 0747</div><div class="row"><span>TOKEN</span><img src="assets/logos/pay-mastercard.svg" alt="Mastercard"></div></div>
+    <div class="phone"><img src="assets/site/flow-surf-3.png" alt="Okienko Simply.IN Potwierdź, że to Ty na surf.inc"></div>
+  </div>
+</div></div></section>
+
+<!-- B5. SKLEPY -->
+<section id="b-shops"><div class="w">
+  <div class="eyebrow">Sklepy z Simply.IN</div>
+  <h2>Jedno konto działa w każdym z tych sklepów.</h2>
+  <p class="lead">Ponad 20 sklepów i wciąż przybywa. Pełną listę masz w aplikacji, a w sklepie poznasz Simply.IN po logo przy polu e-mail.</p>
+  <div class="shops">
+    <span><img src="assets/logos/surf.svg" alt="Surf Inc." style="max-height:30px"></span>
+    <span><img src="assets/logos/store-lasieste-1.webp" alt="La Sieste" style="max-height:22px"></span>
+    <span><img src="assets/logos/store-selva-1.avif" alt="Selva"></span>
+    <span><img src="assets/logos/store-idetails-1.avif" alt="iDetails"></span>
+    <span><img src="assets/logos/store-motosport-1.avif" alt="Motosport Parts"></span>
+    <span><img src="assets/logos/store-1001-1.avif" alt="1001materacy.pl"></span>
+    <span><img src="assets/logos/store-logo_wino-si.webp" alt="wino Sì"></span>
+    <span><img src="assets/logos/store-venus-1.avif" alt="Venus"></span>
+    <span><img src="assets/logos/store-logo_jasam-1.webp" alt="Jasam"></span>
+    <span><img src="assets/logos/store-kingsoft-1.avif" alt="Kingsoft"></span>
+    <span><img src="assets/logos/store-skarira-1.avif" alt="Skarira"></span>
+    <span><img src="assets/logos/store-steamfresh-1.avif" alt="SteamFresh"></span>
+  </div>
+</div></section>
+
+<!-- B6. OPINIE -->
+<section class="soft" id="b-reviews"><div class="w">
+  <div class="revh"><div><div class="eyebrow">Opinie</div><h2>Tak oceniają nas użytkownicy.</h2></div><div class="score"><b class="gt">4,9</b><div><span class="stars">★★★★★</span><small>średnia ocen w App Store</small></div></div></div>
+  <div class="revs">
+    <div class="rev"><span class="stars">★★★★★</span><p>Simply.IN to absolutny game changer. Zakupy z różnych sklepów robię dosłownie w kilka kliknięć. Działa intuicyjnie i wygląda świetnie.</p><div class="au"><i>K</i><div><b>Karolina</b>App Store</div></div></div>
+    <div class="rev"><span class="stars">★★★★★</span><p>Najlepsze rozwiązanie na rynku, jeśli robisz zakupy w wielu sklepach. Wszystkie moje ulubione marki w jednej aplikacji, a finalizacja zamówienia trwa kilka kliknięć.</p><div class="au"><i>K</i><div><b>Kuba</b>App Store</div></div></div>
+    <div class="rev"><span class="stars">★★★★★</span><p>Uwielbiam to, że Simply.IN pamięta moje dane i historię zakupów. Wreszcie nie muszę szukać maili z potwierdzeniami ani śledzić paczek w kilku miejscach.</p><div class="au"><i>J</i><div><b>Jagoda</b>App Store</div></div></div>
+    <div class="rev"><span class="stars">★★★★★</span><p>Świetny pomysł, dobrze wykonany. Przy pierwszym użyciu byłem zaskoczony, jak płynnie to działa.</p><div class="au"><i>M</i><div><b>Marek</b>App Store</div></div></div>
+  </div>
+</div></section>
+
+<!-- B7. PYTANIA -->
+<section id="b-faq"><div class="w faqg">
+  <div><div class="eyebrow">Pytania</div><h2>Zanim pobierzesz aplikację.</h2></div>
+  <div class="qa">
+    <div><b>Ile kosztuje Simply.IN?</b><p>Nic. Aplikacja i konto są za darmo, a zakup z Simply.IN kosztuje Cię tyle samo, co zwykły zakup w sklepie.</p></div>
+    <div><b>Czy muszę mieć aplikację?</b><p>Nie. Zakup potwierdzisz też kodem z SMS-a. Aplikacja przydaje się, gdy chcesz śledzić paczki i mieć zamówienia w jednym miejscu.</p></div>
+    <div><b>Czy sklep widzi numer mojej karty?</b><p>Nie. Karta jest zapisana jako token chroniony standardem PCI DSS, a płatność idzie przez operatora płatności sklepu.</p></div>
+    <div><b>Gdzie zapłacę z Simply.IN?</b><p>W każdym sklepie z logo Simply.IN przy polu e-mail albo z przyciskiem „Kup teraz z Simply.IN”. Listę sklepów masz w aplikacji.</p></div>
+  </div>
+</div></section>
+
+<div class="w" id="b-final">
+  <div class="final"><h2>Najszybsze zakupy w internecie masz w kieszeni.</h2>
+    <p>Pobierz Simply.IN za darmo. Dane wpisujesz raz, a potem płacisz jednym kliknięciem.</p>
+    <div class="badges"><a href="https://apps.apple.com/pl/app/simply-in/id6476778468" target="_blank" rel="noopener"><img src="assets/logos/badge-apple.svg" alt="Pobierz w App Store"></a><a href="https://play.google.com/store/apps/details?id=simplyin.app" target="_blank" rel="noopener"><img class="gp" src="assets/logos/badge-gplay.png" alt="Pobierz z Google Play"></a></div>
+  </div>
+  <a class="xlink" data-go="shop"><div><small>Prowadzisz sklep internetowy?</small><b>Dołóż jedno kliknięcie do checkoutu, który już masz.</b></div><span class="btn b2">Simply.IN dla sklepów →</span></a>
+</div>
+</main>
+
+<main class="view" id="v-int">
+<!-- I1. HERO -->
+<div class="hero" id="i-hero"><div class="mesh"></div><div class="fade"></div>
+<div class="w"><div class="hgrid">
+  <div>
+    <div class="pill"><b>Integracje</b>WooCommerce, PrestaShop, Magento i API</div>
+    <h1>Działa z tym,<br><span class="gt">co już masz w sklepie.</span></h1>
+    <p class="hsub">Włączasz zakupy jednym kliknięciem bez zmiany bramki płatności, dostaw i szablonu. Sprawdź wersję wtyczki dla swojej platformy i moduły, z którymi działa.</p>
+    <div class="ctas"><a class="btn b1" href="https://merchant.simply.in/register/" target="_blank" rel="noopener">Załóż konto sklepu →</a><a class="btn b2" href="https://docs.simply.in" target="_blank" rel="noopener">Dokumentacja API</a></div>
+  </div>
+  <div class="hub">
+    <svg class="hubl" viewBox="0 0 600 540" preserveAspectRatio="none">
+      <path d="M150 145 C190 145,190 250,226 250"/><path d="M150 235 C190 235,190 250,226 250"/><path d="M150 325 C190 325,190 250,226 250"/>
+      <path d="M450 105 C410 105,410 250,374 250"/><path d="M450 195 C410 195,410 250,374 250"/><path d="M450 285 C410 285,410 250,374 250"/><path d="M450 375 C410 375,410 250,374 250"/>
+      <path d="M180 440 C180 370,300 360,300 290"/><path d="M300 440 C300 380,300 340,300 290"/><path d="M420 440 C420 370,300 360,300 290"/>
+    </svg>
+    <small class="hl1">Platforma</small><small class="hl2">Operator płatności</small><small class="hl3">Dostawy</small>
+    <span class="ht" style="left:0;top:115px"><img src="assets/logos/pf-woo.svg" alt="WooCommerce" style="height:30px"></span>
+    <span class="ht" style="left:0;top:205px"><img src="assets/logos/pf-prestashop.svg" alt="PrestaShop" style="height:12px"></span>
+    <span class="ht" style="left:0;top:295px"><img src="assets/logos/pf-magento.svg" alt="Magento" style="height:26px"></span>
+    <span class="ht" style="left:450px;top:75px"><img src="assets/logos/psp-paynow.svg" alt="Paynow" style="height:20px"></span>
+    <span class="ht" style="left:450px;top:165px"><img src="assets/logos/psp-p24.png" alt="Przelewy24" style="height:22px"></span>
+    <span class="ht" style="left:450px;top:255px"><img src="assets/logos/psp-payu.svg" alt="PayU" style="height:20px"></span>
+    <span class="ht" style="left:450px;top:345px"><img src="assets/logos/psp-tpay-1-1.png" alt="Tpay" style="height:20px"></span>
+    <span class="ht sm" style="left:125px;top:440px"><img src="assets/logos/psp-inpost.svg" alt="InPost" style="height:30px"></span>
+    <span class="ht sm" style="left:245px;top:440px"><img src="assets/logos/psp-DHL-1.png" alt="DHL" style="height:16px"></span>
+    <span class="ht sm" style="left:365px;top:440px"><img src="assets/logos/psp-apaczka.png" alt="Apaczka" style="height:20px"></span>
+    <div class="hubc"><img src="assets/logos/simply-logo-white.svg" alt="Simply.IN"><span>jedno kliknięcie</span></div>
+  </div>
+</div></div></div>
+
+<!-- I2. PLATFORMY -->
+<section id="i-platforms"><div class="w">
+  <div class="eyebrow">Platformy</div>
+  <h2>Wtyczka do Twojej platformy.</h2>
+  <p class="lead">Kupujący zostaje na stronie sklepu przez cały zakup, bez przekierowania. Nie ma Twojej wtyczki, np. logistycznej, na liście? Napisz do nas, a dodamy ją.</p>
+  <div class="pcards">
+    <div class="pcard"><div class="pch"><img src="assets/logos/pf-woo.svg" alt="WooCommerce" style="height:40px"><span class="ver">WooCommerce 7.4+ · WP 5.8+ · PHP 7.4+</span></div>
+      <h3>WooCommerce</h3><p>Wtyczka do WordPressa z WooCommerce. Działa z checkoutem klasycznym i blokowym (WooCommerce Blocks) oraz z Gutenbergiem.</p>
+      <div class="compat"><small>Motywy i buildery</small><div><span>Astra</span><span>Elementor</span><span>Avada</span><span>Woodmart</span><span>Kadence</span></div></div>
+      <div class="compat"><small>Moduły dostaw</small><div><span>Flexible Shipping</span><span>Apaczka</span><span>DHL</span><span>DPD</span><span>Furgonetka</span><span>InPost</span></div></div>
+      <div class="acts"><a class="btn b1 sm">Pobierz wtyczkę</a></div></div>
+    <div class="pcard"><div class="pch"><img src="assets/logos/pf-prestashop.svg" alt="PrestaShop" style="height:15px"><span class="ver">1.7, 8 i 9</span></div>
+      <h3>PrestaShop</h3><p>Osobne moduły dla wersji 1.7 oraz dla 8 i 9. Działa z natywnym checkoutem PrestaShop i z checkoutem jednostronicowym.</p>
+      <div class="compat"><small>Checkout jednostronicowy</small><div><span>The Checkout</span></div></div>
+      <div class="compat"><small>Moduły dostaw</small><div><span>InPost</span><span>DHL Assistant (SENSBIT)</span><span>DHL</span><span>DPD Poland</span><span>Apaczka: Orlen, UPS i inni</span></div></div>
+      <div class="acts"><a class="btn b1 sm">Pobierz dla 1.7</a><a class="btn b2 sm">Pobierz dla 8 i 9</a></div></div>
+    <div class="pcard"><div class="pch"><img src="assets/logos/pf-magento.svg" alt="Magento" style="height:34px"><span class="ver">Magento 2 · Luma i Hyvä</span></div>
+      <h3>Magento</h3><p>Moduł dla Magento 2 z motywem Luma oraz osobny moduł dla Hyvä.</p>
+      <div class="compat"><small>Moduły dostaw</small><div><span>InPost (Smartmage)</span><span>DPD Poland</span><span>Orlen Paczka</span></div></div>
+      <div class="acts"><a class="btn b1 sm">Pobierz moduł</a></div></div>
+    <div class="pcard api"><div class="pch"><i class="apii">&lt;/&gt;</i><span class="ver">REST API</span></div>
+      <h3>Własna platforma</h3><p>Podłączasz Simply.IN samodzielnie przez API, z pełną dokumentacją techniczną. Wolisz, żebyśmy pomogli? Napisz przez formularz integracji, a ustalimy szczegóły.</p>
+      <div class="acts"><a class="btn b1 sm" href="https://docs.simply.in" target="_blank" rel="noopener">docs.simply.in</a><a class="btn b2 sm">Formularz integracji</a></div></div>
+  </div>
+  <div class="soonrow">
+    <div class="sooncard"><img src="assets/logos/pf-shopify.svg" alt="Shopify" style="height:28px"><span class="badge soon">Wkrótce</span><a class="btn b2 sm">Powiadom mnie</a></div>
+    <div class="sooncard"><img src="assets/logos/pf-shoper-t.png" alt="Shoper" style="height:24px"><span class="badge soon">Wkrótce</span><a class="btn b2 sm">Powiadom mnie</a></div>
+    <div class="sooncard"><img src="assets/logos/pf-idosell.svg" alt="IdoSell" style="height:24px"><span class="badge plan">W planach</span><a class="btn b2 sm">Powiadom mnie</a></div>
+  </div>
+</div></section>
+
+<!-- I3. OPERATORZY -->
+<section class="soft" id="i-psp"><div class="w">
+  <div class="eyebrow">Operatorzy płatności</div>
+  <h2>15 operatorów. Zostajesz przy swoim.</h2>
+  <p class="lead">Simply.IN działa z operatorem, z którym masz umowę. Płatność idzie przez niego i na Twoich stawkach, a Simply.IN tylko podstawia metodę zapisaną przez klienta.</p>
+  <div class="opg">
+    <span><img src="assets/logos/psp-paynow.svg" alt="Paynow" style="max-height:30px"></span><span><img src="assets/logos/psp-p24.png" alt="Przelewy24" style="max-height:30px"></span><span><img src="assets/logos/psp-tpay-1-1.png" alt="Tpay" style="max-height:26px"></span><span><img src="assets/logos/psp-payu.svg" alt="PayU" style="max-height:26px"></span><span>imoje</span>
+    <span><img src="assets/logos/psp-autopay.svg" alt="Autopay" style="max-height:24px"></span><span><img src="assets/logos/pay-elavon.svg" alt="Elavon" style="max-height:28px"></span><span><img src="assets/logos/psp-paytel.svg" alt="PayTel" style="max-height:24px"></span><span><img src="assets/logos/psp-adyen.svg" alt="Adyen" style="max-height:60px;height:60px"></span><span>ZEN</span>
+    <span><img src="assets/logos/psp-montonio.svg" alt="Montonio" style="max-height:22px"></span><span>PaymentsOS</span><span><img src="assets/logos/psp-paymenterio.svg" alt="Paymenterio" style="max-height:24px"></span><span><img src="assets/logos/psp-coinbase.svg" alt="Coinbase" style="max-height:22px"></span><span><img src="assets/logos/psp-coingate.svg" alt="CoinGate" style="max-height:24px"></span>
+  </div>
+  <div class="methods">
+    <span>Metody płatności, które klient zapisuje w Simply.IN</span>
+    <div class="mrow">
+      <img src="assets/logos/pay-blik.svg" alt="BLIK" style="height:34px">
+      <img src="assets/logos/pay-visa.svg" alt="Visa" style="height:22px">
+      <img src="assets/logos/pay-mastercard2.svg" alt="Mastercard" style="height:34px">
+      <img src="assets/logos/pay-applepay.svg" alt="Apple Pay" style="height:30px">
+      <img src="assets/logos/pay-googlepay.svg" alt="Google Pay" style="height:30px">
+      <b>pay-by-link</b>
+    </div>
+  </div>
+</div></section>
+
+<!-- I4. DOSTAWY -->
+<section id="i-dlv"><div class="w">
+  <div class="eyebrow">Dostawy</div>
+  <h2>Kurierzy i punkty odbioru z Twojego checkoutu.</h2>
+  <p class="lead">Klient wybiera dostawę tak jak dziś, a Simply.IN podpowiada mu ulubiony paczkomat albo adres z profilu.</p>
+  <div class="dlv">
+    <span><img src="assets/logos/psp-inpost.svg" alt="InPost" style="max-height:44px"></span>
+    <span><img src="assets/logos/psp-DHL-1.png" alt="DHL" style="max-height:24px"></span>
+    <span><img src="assets/logos/psp-apaczka.png" alt="Apaczka" style="max-height:30px"></span>
+    <span>DPD</span><span>Orlen Paczka</span><span>GLS</span><span>Furgonetka</span>
+    <span class="add"><b>+ Twoja wtyczka</b><small>Napisz, a dodamy ją</small></span>
+  </div>
+</div></section>
+
+<!-- I5. WDROŻENIE -->
+<section class="net" id="i-steps"><div class="w">
+  <div class="eyebrow" style="color:#5ee0d4">Wdrożenie</div>
+  <h2>Trzy kroki do jednego kliknięcia.</h2>
+  <p class="lead">Instalacja wtyczki zajmuje kilka minut, a wyłączenie jedno kliknięcie.</p>
+  <div class="steps3">
+    <div class="st3"><i>1</i><b>Zakładasz konto sklepu</b><span>W panelu sprzedawcy, bez umowy na start.</span></div>
+    <div class="st3"><i>2</i><b>Instalujesz wtyczkę</b><span>Wersję dla WooCommerce, PrestaShop albo Magento, albo łączysz się przez API.</span></div>
+    <div class="st3"><i>3</i><b>Wybierasz swojego operatora</b><span>Tego, z którym masz umowę, i włączasz Simply.IN w checkoucie.</span></div>
+  </div>
+  <div class="ctas" style="margin-top:34px"><a class="btn b1 inv" href="https://merchant.simply.in/register/" target="_blank" rel="noopener">Załóż konto sklepu →</a><a class="btn b2 inv2" href="https://merchant.simply.in" target="_blank" rel="noopener">Zaloguj się do panelu</a></div>
+</div></section>
+
+<div class="w" id="i-final">
+  <a class="xlink" data-go="price" style="margin-top:80px"><div><small>Ile to kosztuje?</small><b>Płacisz za transakcję, nie procent od obrotu.</b></div><span class="btn b2">Zobacz cennik →</span></a>
+</div>
+</main>
+
+<main class="view" id="v-price">
+<!-- P1. HERO -->
+<div class="hero" id="p-hero"><div class="mesh"></div><div class="fade"></div>
+<div class="w"><div class="hgrid">
+  <div>
+    <div class="pill"><b>0%</b>Bez abonamentu i bez procentu od obrotu</div>
+    <h1>Płacisz za transakcję,<br><span class="gt">nie procent od obrotu.</span></h1>
+    <p class="hsub">Kupujący nie płaci nic. Ty płacisz za transakcję powracającego klienta, a za każde nowe konto Simply.IN założone w Twoim sklepie to my płacimy Tobie.</p>
+    <div class="ctas"><a class="btn b1" href="https://merchant.simply.in/register/" target="_blank" rel="noopener">Załóż konto sklepu →</a><a class="btn b2" data-scroll="p-calc">Policz, ile zapłacisz</a></div>
+  </div>
+  <div class="pflow">
+    <div class="pf"><i><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></i><div><small>Kupujący</small><b>0 zł</b><span>zawsze za darmo</span></div></div>
+    <div class="pf me"><i><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></i><div><small>Ty płacisz Simply.IN</small><b>0,49-0,99 zł</b><span>za transakcję powracającego klienta</span></div></div>
+    <div class="pf earn"><i><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></i><div><small>Simply.IN płaci Tobie</small><b class="gt">0,25-1,00 zł</b><span>za każde nowe konto założone w Twoim sklepie</span></div></div>
+    <div class="pzero"><span>0 zł abonamentu</span><span>0% od obrotu</span><span>bez umowy na start</span></div>
+  </div>
+</div></div></div>
+
+<!-- P2. KALKULATOR -->
+<section class="soft" id="p-calc"><div class="w">
+  <div class="eyebrow">Kalkulator</div>
+  <h2>Policz, ile zapłacisz w miesiącu.</h2>
+  <p class="lead">Przesuń suwaki pod swój sklep. Opłatę operatora płatności płacisz jak dziś, według swojej umowy.</p>
+  <div class="calc">
+    <div class="cin">
+      <div class="rg"><label>Transakcje powracających klientów <output id="o-n"></output></label><input type="range" id="c-n" min="0" max="5000" step="50" value="800"><small>zakupy jednym kliknięciem w miesiącu</small></div>
+      <div class="rg"><label>Nowe konta Simply.IN <output id="o-a"></output></label><input type="range" id="c-a" min="0" max="2000" step="10" value="200"><small>założone w Twoim checkoucie w miesiącu</small></div>
+      <div class="rg"><label>Średnia wartość zamówienia <output id="o-v"></output></label><input type="range" id="c-v" min="50" max="1500" step="10" value="300"><small>żeby porównać opłatę z prowizją od sprzedaży</small></div>
+    </div>
+    <div class="cout">
+      <div class="co"><small>Płacisz Simply.IN</small><b id="r-cost"></b></div>
+      <div class="co"><small>Simply.IN płaci Tobie za nowe konta</small><b class="gt" id="r-earn"></b></div>
+      <div class="co last"><small>Opłata Simply.IN jako część wartości tych zamówień</small><b id="r-pct"></b></div>
+      <div class="cbar"><small>Ta sama sprzedaż, inny model opłat</small>
+        <div><span>Simply.IN</span><i id="b-si"></i><em id="t-si"></em></div>
+        <div><span>Prowizja marketplace'u 10-25%</span><i class="mk" id="b-mk"></i><em id="t-mk"></em></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- P3. BEZ OPŁAT I W CENIE -->
+<section id="p-incl"><div class="w">
+  <div class="eyebrow">Co jest w cenie</div>
+  <h2>Żadnych opłat poza transakcją.</h2>
+  <div class="incl">
+    <div class="ibx"><h3>Nie płacisz za</h3>
+      <div class="zl"><div>Instalację wtyczki<b class="gt">0 zł</b></div><div>Abonament<b class="gt">0 zł</b></div><div>Procent od obrotu<b class="gt">0%</b></div><div>Wyłączenie<b class="gt">0 zł</b></div><div>Konto kupującego<b class="gt">0 zł</b></div><div>Zmianę operatora<b class="gt">nie trzeba</b></div></div>
+    </div>
+    <div class="ibx"><h3>Dostajesz w cenie</h3>
+      <ul class="inl">
+        <li><i>✓</i>Zakup jednym kliknięciem w Twoim checkoucie</li>
+        <li><i>✓</i>Przycisk „Kup teraz z Simply.IN” na karcie produktu</li>
+        <li><i>✓</i>Apple Pay bez dodatkowego wdrożenia, jeśli obsługuje je Twój operator</li>
+        <li><i>✓</i>Panel sprzedawcy: lejek miesiąca, rozliczenia, eksport do CSV i XLSX</li>
+        <li><i>✓</i>Oferty partnerów w panelu, np. tańsze wysyłki z Apaczką</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<!-- P4. PYTANIA -->
+<section class="soft" id="p-faq"><div class="w faqg">
+  <div><div class="eyebrow">Pytania o cennik</div><h2>Krótko o pieniądzach.</h2></div>
+  <div class="qa">
+    <div><b>Czy jest abonament?</b><p>Nie. Płacisz tylko za transakcje powracających klientów, którzy kupują jednym kliknięciem.</p></div>
+    <div><b>Czy Simply.IN bierze procent od obrotu?</b><p>Nie. To stała stawka za transakcję, więc nie rośnie razem z wartością koszyka.</p></div>
+    <div><b>Co z opłatą operatora płatności?</b><p>Płacisz ją jak dziś, według swojej umowy. Simply.IN jej nie zmienia i nic do niej nie dolicza.</p></div>
+    <div><b>Za co Simply.IN płaci mnie?</b><p>Za każde nowe konto Simply.IN założone w Twoim checkoucie. Klient z takim kontem wróci potem szybciej także do Ciebie.</p></div>
+    <div><b>Gdzie widzę rozliczenie?</b><p>W panelu sprzedawcy, razem z lejkiem miesiąca i eksportem do CSV i XLSX.</p></div>
+    <div><b>Jak zrezygnować?</b><p>Wyłączasz Simply.IN jednym kliknięciem, bez umowy na start. Checkout wraca do stanu sprzed instalacji.</p></div>
+  </div>
+</div></section>
+
+<div class="w" id="p-final">
+  <div class="final"><h2>Pierwsze konta mogą zarobić na siebie od razu.</h2>
+    <p>Załóż konto sklepu i zainstaluj wtyczkę. Za każde nowe konto Simply.IN w Twoim checkoucie płacimy Tobie.</p>
+    <div class="ctas" style="margin-top:28px"><a class="btn b1" href="https://merchant.simply.in/register/" target="_blank" rel="noopener">Załóż konto sklepu →</a><a class="btn b2" href="https://merchant.simply.in" target="_blank" rel="noopener">Zaloguj się</a></div>
+  </div>
+  <a class="xlink" data-go="int"><div><small>Twoja platforma i operator</small><b>Sprawdź, z czym działa Simply.IN.</b></div><span class="btn b2">Zobacz integracje →</span></a>
+</div>
+</main>
+
+<div class="w"><footer><img src="assets/logos/simply-logo.svg" alt="Simply.IN"><span>© 2026 Simply.IN P.S.A. · <a href="https://simply.in/terms-b2c/" target="_blank" rel="noopener">Regulamin B2C</a> · <a href="https://simply.in/terms-b2b/" target="_blank" rel="noopener">Regulamin B2B</a> · <a href="https://simply.in/privacy-policy/" target="_blank" rel="noopener">Polityka prywatności</a> · <a href="https://docs.simply.in" target="_blank" rel="noopener">Dokumentacja API</a> · <a href="https://merchant.simply.in" target="_blank" rel="noopener">Panel sprzedawcy</a></span></footer></div>
+
+<script>
+(function(){
+  var b=document.body, top=document.getElementById('top');
+  var H={shop:'#dla-sklepow',buyer:'#dla-kupujacych',int:'#integracje',price:'#cennik'};
+  var T={shop:'Simply.IN dla sklepów',buyer:'Simply.IN dla kupujących',int:'Integracje | Simply.IN',price:'Cennik | Simply.IN'};
+  function setView(v,push){
+    if(!H[v]) v='shop';
+    b.setAttribute('data-view',v);
+    var aud=v==='buyer'?'buyer':'shop';
+    document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-selected',x.getAttribute('data-go')===aud?'true':'false')});
+    document.querySelectorAll('.nl a').forEach(function(x){x.classList.toggle('on',x.getAttribute('data-go')===v)});
+    document.title=T[v];
+    if(push){history.replaceState(null,'',H[v]);window.scrollTo(0,0);}
+  }
+  document.querySelectorAll('[data-go]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();setView(el.getAttribute('data-go'),true)})});
+  document.querySelectorAll('[data-scroll]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();var t=document.getElementById(el.getAttribute('data-scroll'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-90,behavior:'smooth'})})});
+  function fromHash(){var v='shop';for(var k in H){if(H[k]===location.hash)v=k}setView(v,false)}
+  window.addEventListener('hashchange',fromHash); fromHash();
+  function onScroll(){top.classList.toggle('sc',window.scrollY>12)}
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  // kalkulator w cenniku
+  function g(id){return document.getElementById(id)}
+  function zl(n,d){var s=n.toFixed(d||0).replace('.',',');var p=s.split(',');p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,' ');return p.join(',')}
+  function calc(){
+    var n=+g('c-n').value,a=+g('c-a').value,v=+g('c-v').value;
+    g('o-n').textContent=zl(n); g('o-a').textContent=zl(a); g('o-v').textContent=zl(v)+' zł';
+    var c1=n*.49,c2=n*.99,e1=a*.25,e2=a*1,m1=n*v*.10,m2=n*v*.25;
+    g('r-cost').textContent=zl(c1)+'-'+zl(c2)+' zł';
+    g('r-earn').textContent=zl(e1)+'-'+zl(e2)+' zł';
+    g('r-pct').textContent=zl(49/v,2)+'-'+zl(99/v,2)+'%';
+    g('t-si').textContent=zl(c1)+'-'+zl(c2)+' zł'; g('t-mk').textContent=zl(m1)+'-'+zl(m2)+' zł';
+    var mx=Math.max(m2,1); g('b-si').style.width=(c2/mx*100)+'%'; g('b-mk').style.width='100%';
+  }
+  if(g('c-n')){['c-n','c-a','c-v'].forEach(function(id){g(id).addEventListener('input',calc)}); calc();}
+})();
+</script>
 </body>
 </html>
